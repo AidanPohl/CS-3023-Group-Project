@@ -2,20 +2,21 @@
  * Created By: Aidan Pohl
  * Created: April 10, 2022
  * 
- * Last Edited by: N?/A
+ * Last Edited by: April 18,2022
  * 
  * Description: Return Object to Pool
  * 
  * 
- ***/using System.Collections;
+ ***/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PoolReturn : MonoBehaviour
 {
     public GameObject poolGO;
-    ObjectPool pool;
-    private void Awake()
+    public ObjectPool pool;
+    private void Start()
     {
         pool = poolGO.GetComponent<ObjectPool>().POOL;
     }

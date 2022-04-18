@@ -2,7 +2,7 @@
  * Created By: Aidan Pohl
  * Created: April 10, 2022
  * 
- * Last Edited by: N/A
+ * Last Edited by: April 18, 2022
  * 
  * Description: Object Pool for objects
  * 
@@ -22,7 +22,7 @@ public class ObjectPool : MonoBehaviour
     public int poolStartSize = 5;
     private void Awake()
     {
-
+        POOL = this;
     }//end Awake()
 
 
@@ -32,6 +32,7 @@ public class ObjectPool : MonoBehaviour
         for (int i =0; i < poolStartSize; i++)
         {
             GameObject gObject = Instantiate(objectPrefab,transform);
+            gObject.GetComponent<PoolReturn>().poolGO = gameObject;
             objects.Enqueue(gObject); //add to queue
             gObject.SetActive(false);
         }//end for loop
