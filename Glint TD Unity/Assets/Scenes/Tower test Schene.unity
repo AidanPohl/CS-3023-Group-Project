@@ -208,8 +208,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tower2
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 470807693338523996, guid: 9bca567ba2a286c499ed393c993cfc76, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bca567ba2a286c499ed393c993cfc76, type: 3}
 --- !u!1 &1353145076
 GameObject:
