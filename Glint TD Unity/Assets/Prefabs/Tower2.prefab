@@ -247,17 +247,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1177107081572012241}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87871bbc593567b4f82dcfabe524a043, type: 3}
+  m_Script: {fileID: 11500000, guid: f43835a0fdd7754478eeb3986b5f730e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footprint: 0.75
+  footprint: 1
   attacksPerSecond: 1
   attackStrength: 1
-  targeting: 2
-  range: 3
-  attackType: 2
-  projectileSpeed: 1
-  attackPoolName: AttackPool2
+  range: 0
+  pulseSpeed: 1
 --- !u!1 &1835798258164613104
 GameObject:
   m_ObjectHideFlags: 0
@@ -1000,6 +997,10 @@ PrefabInstance:
       propertyPath: m_Shadows.m_NearPlane
       value: 0.099999994
       objectReference: {fileID: 0}
+    - target: {fileID: 775943312998387045, guid: 15fe0a95ed652904691fd43d5b8d71e3, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7315434669042597335, guid: 15fe0a95ed652904691fd43d5b8d71e3, type: 3}
       propertyPath: m_Name
       value: Tower pulsar
@@ -1048,7 +1049,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -1195604720444728130, guid: 15fe0a95ed652904691fd43d5b8d71e3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 15fe0a95ed652904691fd43d5b8d71e3, type: 3}
 --- !u!4 &300277905807955868 stripped
 Transform:

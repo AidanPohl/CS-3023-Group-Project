@@ -333,7 +333,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.75
+  m_Radius: 10
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &470807693338523996
 MonoBehaviour:
@@ -344,15 +344,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1177107081572012241}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87871bbc593567b4f82dcfabe524a043, type: 3}
+  m_Script: {fileID: 11500000, guid: ea0b66083f329164b97ccd55530fee19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footprint: 0.75
+  footprint: 1
   attacksPerSecond: 1
   attackStrength: 1
-  targeting: 2
-  range: 3
-  attackType: 0
+  targeting: 0
+  range: 10
   projectileSpeed: 1
   attackPoolName: AttackPool1
 --- !u!1 &2862457392031234182

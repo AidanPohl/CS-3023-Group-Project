@@ -3,7 +3,7 @@
  * Date Created: April 4, 2022
  * 
  * Last Edited By:
- * Date Last Edited: April 18, 2022
+ * Date Last Edited: April 20, 2022
  * 
  8 Description: Funny object do the shooty shoot
  * */
@@ -20,13 +20,11 @@ public class TowerAttacking : MonoBehaviour
     public float attacksPerSecond = 1; //How quickly it attacks
     public int attackStrength = 1; //How much damage each attack does
     private SphereCollider footprintCollider;
-    private GameObject gOTurret;
-    private GameObject gOBase;
+    private Transform transTurret;
+    private Transform transBase;
     [Header("Attack Stats")]
     public TargetingTypes targeting;
     public float range = 0f; //How far it can see/attack
-    public AttackTypes attackType = AttackTypes.Projectile;
-    public enum AttackTypes {Projectile, Beam, Pulsar, None}
     public float projectileSpeed = 1;
     public string attackPoolName = "AttackPool1";
     private ObjectPool attackPool;
@@ -42,6 +40,12 @@ public class TowerAttacking : MonoBehaviour
         footprintCollider.radius = footprint;
         enemiesInRange = new HashSet<Transform>();
         attackPool = GameObject.Find(attackPoolName).GetComponent<ObjectPool>();
+        transTurret = transform.Find("Turret");
+        transBase = transform.Find("Base");
+    }
+    void Start()
+    {
+        Activate();
     }
 
     void Activate()
@@ -53,25 +57,21 @@ public class TowerAttacking : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!target)
+        if (target)
         {
-            gOTurret.transform.LookAt(target);
+            transTurret.LookAt(target);
         }
     }
 
     public void Fire() {
-        UpdateTarget();
-            switch (attackType)
-            {
-                case AttackTypes.Projectile:
-                    ProjectileFire();
-                    break;
-            }
+       UpdateTarget();
+       ProjectileFire();
+            
     }
 
     private void ProjectileFire()
     {
-        if (!target) { //if no target do not fire
+        if (target) { //if no target do not fire
             GameObject projGO = attackPool.POOL.GetObject(); //Creates a new Projectile
             Vector3 toEnemy = target.position - transform.position; // Gets the direction between tower and target
             toEnemy.Normalize();
