@@ -5,15 +5,18 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Tower Projectile
+  - Tower
+  - Tower Pulse
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemy
   - Water
   - UI
-  - 
-  - 
+  - Tower
+  - Projectile
   - 
   - 
   - 
