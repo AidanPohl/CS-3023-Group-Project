@@ -47,8 +47,10 @@ public class ObjectPool : MonoBehaviour
             return gObject;
         }
         else {
-            Debug.LogWarning("Out of objects, Reloading you wasteful c");
-            return null; 
+            GameObject gObject = Instantiate(objectPrefab,transform); //make a new object if queue is empty
+            gObject.GetComponent<PoolReturn>().poolGO = gameObject;
+            gObject.SetActive(true);
+            return gObject; 
         }//end if else
     }//end getObject()
 

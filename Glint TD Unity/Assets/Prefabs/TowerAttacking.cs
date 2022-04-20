@@ -19,7 +19,7 @@ public class TowerAttacking : MonoBehaviour
     public float footprint = 1;
     public float attacksPerSecond = 1; //How quickly it attacks
     public int attackStrength = 1; //How much damage each attack does
-    private SphereCollider footprintCollider;
+    private SphereCollider rangeCollider;
     private Transform transTurret;
     private Transform transBase;
     [Header("Attack Stats")]
@@ -31,13 +31,13 @@ public class TowerAttacking : MonoBehaviour
     public enum TargetingTypes {First, Last, Close, Null}
     private Transform targetProtect;
     private Transform target = null;
-    public HashSet<Transform> enemiesInRange;
+    public HashSet<Transform> enemiesInRange = new HashSet<Transform>();
 
     // Start is called before the first frame update
     private void Awake()
     {
-        footprintCollider = GetComponent<SphereCollider>();
-        footprintCollider.radius = footprint;
+        rangeCollider = GetComponent<SphereCollider>();
+        rangeCollider.radius = range;
         enemiesInRange = new HashSet<Transform>();
         attackPool = GameObject.Find(attackPoolName).GetComponent<ObjectPool>();
         transTurret = transform.Find("Turret");
@@ -64,19 +64,24 @@ public class TowerAttacking : MonoBehaviour
     }
 
     public void Fire() {
-       UpdateTarget();
+       target = UpdateTarget();
        ProjectileFire();
             
     }
 
     private void ProjectileFire()
     {
-        if (target) { //if no target do not fire
+        if (!target)
+        { //if no target do not fire
+            return;
+        }
+        else {
+            Debug.Log(target);
             GameObject projGO = attackPool.POOL.GetObject(); //Creates a new Projectile
-            Vector3 toEnemy = target.position - transform.position; // Gets the direction between tower and target
+            Vector3 toEnemy = target.position - transTurret.position; // Gets the direction between tower and target
             toEnemy.Normalize();
 
-            projGO.transform.position = transform.position;
+            projGO.transform.position = transTurret.position;
             Rigidbody rb = projGO.GetComponent<Rigidbody>(); //Send the projectile to fire at the target
             projGO.transform.LookAt(target);//point projectile at target
             rb.velocity = toEnemy * projectileSpeed;//send projectile at speed towards current target position
@@ -85,7 +90,8 @@ public class TowerAttacking : MonoBehaviour
     }
 
     private Transform UpdateTarget()
-    {   
+    {
+        Debug.Log(enemiesInRange.Count);
         if (enemiesInRange.Count == 0)
         {
             return null;
@@ -116,17 +122,18 @@ public class TowerAttacking : MonoBehaviour
         }
     }//end Targeting()
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         Debug.Log("ping");
         GameObject collGO = collision.gameObject;
         if (collGO.tag == "Enemy")
         {
-            enemiesInRange.Add(collGO.transform);
+            Debug.Log(collision);
+            enemiesInRange.Add(collision.transform);
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider collision)
     {
         GameObject collGO = collision.gameObject;
         if (collGO.tag == "Enemy")

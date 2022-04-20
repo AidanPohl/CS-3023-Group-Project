@@ -52,7 +52,11 @@ public class TowerPulsar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Quaternion rot = transTurret.rotation;
+        Quaternion tureetRot = transTurret.rotation;
+        Vector3 rot = tureetRot.eulerAngles;
+        rot.y += .1f;
+        tureetRot.eulerAngles = rot;
+        transTurret.rotation = tureetRot;
     }
 
 
