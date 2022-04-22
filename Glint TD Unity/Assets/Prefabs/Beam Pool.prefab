@@ -14,7 +14,7 @@ PrefabInstance:
     - target: {fileID: 2740266841031300943, guid: 1bffd1f79e870244fbed09ffa82f6e88, type: 3}
       propertyPath: objectPrefab
       value: 
-      objectReference: {fileID: 7315434669042597335, guid: 15fe0a95ed652904691fd43d5b8d71e3, type: 3}
+      objectReference: {fileID: 7315434669042597335, guid: 3199180b047345543b5ca360e28ee7e7, type: 3}
     - target: {fileID: 4156609764863300851, guid: 1bffd1f79e870244fbed09ffa82f6e88, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -61,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8972376230924294833, guid: 1bffd1f79e870244fbed09ffa82f6e88, type: 3}
       propertyPath: m_Name
-      value: AttackPool1
+      value: Beam Pool
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bffd1f79e870244fbed09ffa82f6e88, type: 3}

@@ -3,7 +3,7 @@
  * Date Created: April 4, 2022
  * 
  * Last Edited By:
- * Date Last Edited: April 20, 2022
+ * Date Last Edited: April 21, 2022
  * 
  8 Description: Funny object do the shooty shoot
  * */
@@ -11,52 +11,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
-public class TowerAttacking : MonoBehaviour
+public class TowerProjectile : Tower
 {
     /**VARIABLES**/
-    [Header("Tower Stats")]
-
-    public float footprint = 1;
+    [Header("Attack Stats")]
     public float attacksPerSecond = 1; //How quickly it attacks
     public int attackStrength = 1; //How much damage each attack does
-    private SphereCollider rangeCollider;
-    private Transform transTurret;
-    private Transform transBase;
-    [Header("Attack Stats")]
-    public TargetingTypes targeting;
-    public float range = 0f; //How far it can see/attack
+    public enum TargetingTypes {First, Last, Close, Null}
+    private TargetingTypes targeting = TargetingTypes.Close;
     public float projectileSpeed = 1;
     public string attackPoolName = "AttackPool1";
     private ObjectPool attackPool;
-    public enum TargetingTypes {First, Last, Close, Null}
+
     private Transform targetProtect;
     private Transform target = null;
-    public HashSet<Transform> enemiesInRange = new HashSet<Transform>();
 
     // Start is called before the first frame update
-    private void Awake()
+    new private void Awake()
     {
-        rangeCollider = GetComponent<SphereCollider>();
-        rangeCollider.radius = range;
-        enemiesInRange = new HashSet<Transform>();
+        base.Awake();
         attackPool = GameObject.Find(attackPoolName).GetComponent<ObjectPool>();
-        transTurret = transform.Find("Turret");
-        transBase = transform.Find("Base");
-    }
-    void Start()
-    {
-        Activate();
     }
 
-    void Activate()
-    {
+    new void Activate()
+    {   
+        base.Activate();
         Targeting();
         InvokeRepeating("Fire", 0f, 1/attacksPerSecond); //finds new target and fires
     }
 
     // Update is called once per frame
-    void Update()
+    new void Update()
     {
+        base.Update();
         if (target)
         {
             transTurret.LookAt(target);
@@ -66,7 +53,6 @@ public class TowerAttacking : MonoBehaviour
     public void Fire() {
        target = UpdateTarget();
        ProjectileFire();
-            
     }
 
     private void ProjectileFire()
@@ -78,6 +64,7 @@ public class TowerAttacking : MonoBehaviour
         else {
             Debug.Log(target);
             GameObject projGO = attackPool.POOL.GetObject(); //Creates a new Projectile
+            projGO.GetComponent<Attack>().damage = attackStrength; //Set projectile damage
             Vector3 toEnemy = target.position - transTurret.position; // Gets the direction between tower and target
             toEnemy.Normalize();
 
@@ -122,27 +109,4 @@ public class TowerAttacking : MonoBehaviour
         }
     }//end Targeting()
 
-    private void OnTriggerEnter(Collider collision)
-    {
-        Debug.Log("ping");
-        GameObject collGO = collision.gameObject;
-        if (collGO.tag == "Enemy")
-        {
-            Debug.Log(collision);
-            enemiesInRange.Add(collision.transform);
-        }
-    }
-
-    private void OnTriggerExit(Collider collision)
-    {
-        GameObject collGO = collision.gameObject;
-        if (collGO.tag == "Enemy")
-        {
-            enemiesInRange.Remove(collGO.transform);
-        }
-    }
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawWireSphere(transform.position, range);
-    }
 }

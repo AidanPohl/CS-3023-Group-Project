@@ -18,6 +18,6 @@ public class SpawnEnemy : MonoBehaviour
     void Update()
     {
         Vector3 direction = dest.position - transform.position; 
-        transform.Translate 
+        //transform.Translate 
     }
 }

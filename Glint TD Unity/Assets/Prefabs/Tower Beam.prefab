@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: -1195604720444728130}
   - component: {fileID: 274729789445260225}
   m_Layer: 7
-  m_Name: Tower projectile 1
+  m_Name: Tower Beam
   m_TagString: Tower Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
