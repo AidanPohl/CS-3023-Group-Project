@@ -16,14 +16,14 @@ public class Tower : MonoBehaviour
 {
     /**VARIABLES**/
     [Header("Tower Stats")]
-    public bool active = false;
+    protected bool active = false;
     public bool devActivate = false;
     public float footprint = 1;
 
     protected SphereCollider rangeCollider;
     protected Transform transTurret;
     protected Transform transBase;
-    public HashSet<Transform> enemiesInRange = new HashSet<Transform>();
+    public List<Transform> enemiesInRange = new List<Transform>();
     public float range = 0f; //How far it can see/attack
  
 
@@ -34,17 +34,19 @@ public class Tower : MonoBehaviour
     {
         rangeCollider = GetComponent<SphereCollider>();
         rangeCollider.radius = range;
-        enemiesInRange = new HashSet<Transform>();
+        enemiesInRange = new List<Transform>();
         transTurret = transform.Find("Turret");
         transBase = transform.Find("Base");
     }
 
     virtual public void Activate()
     {   
+        Debug.Log(gameObject.name +" activated.");
         active = true;
         devActivate = true;
     }
     virtual public void Deactivate(){
+        Debug.Log(gameObject.name +" deactivated.");
         active = false;
         devActivate=false;
         CancelInvoke();

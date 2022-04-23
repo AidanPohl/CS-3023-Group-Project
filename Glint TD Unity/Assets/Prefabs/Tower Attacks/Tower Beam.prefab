@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 775943312998387045}
   - component: {fileID: -1195604720444728130}
   - component: {fileID: 274729789445260225}
+  - component: {fileID: 7508533667669481661}
   m_Layer: 7
   m_Name: Tower Beam
   m_TagString: Tower Projectile
@@ -222,3 +223,16 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &7508533667669481661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7315434669042597335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9144f9a8ec0790f45a3d3494677d6cee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0

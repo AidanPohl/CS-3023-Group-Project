@@ -3,13 +3,14 @@
  * Date Created: April 4, 2022
  * 
  * Last Edited By:
- * Date Last Edited: April 21, 2022
+ * Date Last Edited: April 23, 2022
  * 
- 8 Description: Funny object do the shooty shoot
+ * Description: Funny object do the shooty shoot
  * */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 [RequireComponent(typeof(SphereCollider))]
 public class TowerProjectile : Tower
 {
@@ -18,79 +19,89 @@ public class TowerProjectile : Tower
     public float attacksPerSecond = 1; //How quickly it attacks
     public int attackStrength = 1; //How much damage each attack does
     public enum TargetingTypes {First, Last, Close, Null}
-    private TargetingTypes targeting = TargetingTypes.Close;
-    public float projectileSpeed = 1;
-    public string attackPoolName = "AttackPool1";
-    private ObjectPool attackPool;
+    protected TargetingTypes targeting = TargetingTypes.Close;
+    public float projectileSpeed = 1;//how fast the projectiles move
+    public string attackPoolName;//name of the projectile object pool
+    public ObjectPool attackPool;//where it gets its projectiles from
 
-    private Transform targetProtect;
-    private Transform target = null;
+    protected Transform targetProtect;//what the tower is protecting (decides what to target)
+    protected Transform target = null;//target to fire at
+    protected Vector3 fireFrom;//where the projectiles launch from
 
     // Start is called before the first frame update
-    new private void Awake()
+    override protected void Awake()
     {
         base.Awake();
-        attackPool = GameObject.Find(attackPoolName).GetComponent<ObjectPool>();
-        if(!attackPool){
-            Debug.Log(attackPoolName + "does not exist!");
+        try{
+        attackPool = GameObject.Find(attackPoolName).GetComponent<ObjectPool>(); // gets Attack pool
+        } catch(Exception e){
+            Debug.LogError(e);
         }
-    }
+        fireFrom = transTurret.position;
+    }//end Awake();
 
-    new void Activate()
+    override public void Activate()
     {   
         base.Activate();
-        Targeting();
-        InvokeRepeating("Fire", 0f, 1/attacksPerSecond); //finds new target and fires
-    }
+
+        if(!attackPool){ //checks for attack pool
+            Debug.LogError(gameObject.name+" has no Attack Pool!");
+            Deactivate();
+            return;
+        }
+
+        Targeting(); //chooses targeting type (NOT IMPLIMENTED)
+        InvokeRepeating("Fire", 0.5f, 1/attacksPerSecond); //finds new target and fires every 1/attackspersecond seconds
+    }//end Activate();
 
     // Update is called once per frame
-    new void Update()
+    override protected void Update()
     {
         base.Update();
-        if (target)
+        if (target) //Point turret towards target
         {
             transTurret.LookAt(target);
-        }
-    }
+        }//end if(target)
+    }//end Update()
 
-    public void Fire() {
-       target = UpdateTarget();
-       ProjectileFire();
-    }
 
-    private void ProjectileFire()
-    {
+    private void Fire() //Fires a projectile at the current target
+    {  target = UpdateTarget();                                             //get new target
+
         if (!target)
         { //if no target do not fire
             return;
         }
         else {
+            Debug.Log(gameObject.name + ": Firing at "+target.gameObject.name);
             Debug.Log(target);
-            GameObject projGO = attackPool.POOL.GetObject(); //Creates a new Projectile
-            projGO.GetComponent<Attack>().damage = attackStrength; //Set projectile damage
-            Vector3 toEnemy = target.position - transTurret.position; // Gets the direction between tower and target
-            toEnemy.Normalize();
+            GameObject projGO = attackPool.POOL.GetObject();                //Gets a new Projectile
+            projGO.transform.position = fireFrom;                           //sets projectile initial position
+            projGO.GetComponent<Attack>().damage = attackStrength;          //Set projectile damage
+            Vector3 toEnemy = target.position - projGO.transform.position;  // Gets the direction between tower and target
+            toEnemy.Normalize();                                            //normalizes direction vector
 
-            projGO.transform.position = transTurret.position;
-            Rigidbody rb = projGO.GetComponent<Rigidbody>(); //Send the projectile to fire at the target
-            projGO.transform.LookAt(target);//point projectile at target
-            rb.velocity = toEnemy * projectileSpeed;//send projectile at speed towards current target position
+
+            Rigidbody rb = projGO.GetComponent<Rigidbody>();                //Send the projectile to fire at the target
+            projGO.transform.LookAt(target);                                //point projectile at target
+            rb.velocity = toEnemy * projectileSpeed;                        //send projectile at speed towards current target position
             projGO.SetActive(true);
-        }
-    }
+        }//end if else
+    }//end ProjectileFire()
 
-    private Transform UpdateTarget()
+    private Transform UpdateTarget() //updates the current target
     {
-        Debug.Log(enemiesInRange.Count);
-        if (enemiesInRange.Count == 0)
+        Debug.Log(gameObject.name+": "+enemiesInRange.Count +" enemies in range;");
+        if (enemiesInRange.Count == 0) //if no enemies in range, no target
         {
             return null;
         }
         float minDistance = Mathf.Infinity;
         Transform closestEnemy = null;
 
-        foreach (Transform enemy in enemiesInRange)
-        {
+        foreach (Transform enemy in enemiesInRange) //checks which enemy is closest to targetprotect
+        {   
+            Debug.Log(gameObject.name+":  Checking "+enemy.gameObject.name+" position...");
             float distToEnemy = Vector3.Distance(targetProtect.position, enemy.position);
             if (distToEnemy < minDistance)
             {
@@ -100,16 +111,18 @@ public class TowerProjectile : Tower
 
         }
         return closestEnemy;
-    }
+    }//end UpdateTarget()
 
-    private void Targeting()
-    {
+    private void Targeting() //choses target protect based on targting type (WIP)
+    {   
+        Debug.Log(gameObject.name+": Setting Targeting Method.");
         switch (targeting)
         {
             case TargetingTypes.Close:
                 targetProtect = transform;
                 break;
+            //TODO: Impliment other TargetingTypes (First, Last, Strong)
         }
     }//end Targeting()
 
-}
+}//end TowerProjectile

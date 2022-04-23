@@ -112,7 +112,7 @@ Transform:
   m_LocalScale: {x: 0.05, y: 0.5, z: 0.05}
   m_Children: []
   m_Father: {fileID: 8695851738191230647}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2349326940272005983
 MeshFilter:
@@ -207,7 +207,7 @@ Transform:
   m_LocalScale: {x: 0.05, y: 0.5, z: 0.05}
   m_Children: []
   m_Father: {fileID: 8695851738191230647}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6022706967439246208
 MeshFilter:
@@ -379,13 +379,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 847758933015055658}
-  m_LocalRotation: {x: -0.13052624, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalRotation: {x: -0.13052624, y: -0, z: -0, w: 0.9914449}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 2277933234241425886}
-  m_Father: {fileID: 8695851738191230647}
-  m_RootOrder: 1
+  m_Father: {fileID: 1327872613412568845}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -15, y: 0, z: 0}
 --- !u!33 &1858452372756036888
 MeshFilter:
@@ -459,7 +459,7 @@ GameObject:
   m_Component:
   - component: {fileID: 987628263297853736}
   - component: {fileID: 3281327882493347132}
-  - component: {fileID: 470807693338523996}
+  - component: {fileID: 4419468806273758680}
   - component: {fileID: -3231928165402365691}
   m_Layer: 6
   m_Name: Bomb Tower
@@ -480,6 +480,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5283067502118306189}
+  - {fileID: 1327872613412568845}
   - {fileID: 8695851738191230647}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -497,7 +498,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &470807693338523996
+--- !u!114 &4419468806273758680
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -506,17 +507,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1177107081572012241}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea0b66083f329164b97ccd55530fee19, type: 3}
+  m_Script: {fileID: 11500000, guid: 8113e76f431dabf4d85b34b6d6b78607, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  active: 0
   devActivate: 0
   footprint: 1
+  enemiesInRange: []
   range: 5
   attacksPerSecond: 0.33333334
   attackStrength: 5
-  projectileSpeed: 1
+  projectileSpeed: 3
   attackPoolName: Bomb Pool
+  attackPool: {fileID: 0}
+  transCannon: {fileID: 0}
 --- !u!54 &-3231928165402365691
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -528,8 +531,8 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -629,6 +632,37 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!1 &2231289772685282070
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1327872613412568845}
+  m_Layer: 0
+  m_Name: Cannon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1327872613412568845
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2231289772685282070}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5952959910246241431}
+  m_Father: {fileID: 987628263297853736}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2862457392031234182
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,9 +784,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6521315370919388270}
-  - {fileID: 5952959910246241431}
   - {fileID: 7797819497495970157}
   - {fileID: 8320807959716563349}
   m_Father: {fileID: 987628263297853736}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

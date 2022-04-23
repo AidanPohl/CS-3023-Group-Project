@@ -2,8 +2,8 @@
  * Created by: Garron Denney
  * Date Created: April 18, 2022
  * 
- * Last Edited by: NA
- * Last Edited: April 18, 2022
+ * Last Edited by: Aidan Pohl
+ * Last Edited: April 23, 2022
  * 
  * Description: projects a circle around the given object, visual to indicate radius
 ****/
@@ -26,7 +26,7 @@ public class Radius : MonoBehaviour
     {
         line = gameObject.GetComponent<LineRenderer>();
 
-        line.SetVertexCount(segments + 1);
+        line.positionCount = segments + 1;
         line.useWorldSpace = false;
         CreatePoints();
     }
@@ -35,14 +35,14 @@ public class Radius : MonoBehaviour
     {
         float x;
         float y;
-        float z;
+        //float z;
 
         float angle = 20f;
 
-        for (int i = 0; i < (segments + 1); i++)
+        for (int i = 0; i < (segments + 1); i++)//Generates each point int he circle
         {
-            x = Mathf.Sin(Mathf.Deg2Rad * angle) * xradius;
-            y = Mathf.Cos(Mathf.Deg2Rad * angle) * yradius;
+            x = Mathf.Sin(Mathf.Deg2Rad * angle) * xradius; //sets the x position
+            y = Mathf.Cos(Mathf.Deg2Rad * angle) * yradius; //sets the y position
 
             line.SetPosition(i, new Vector3(x, y, 0));
 

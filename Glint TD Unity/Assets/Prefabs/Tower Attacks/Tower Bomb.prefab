@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: -1195604720444728130}
   - component: {fileID: 274729789445260225}
   - component: {fileID: 6333635781131907946}
+  - component: {fileID: 4348385123500203067}
   m_Layer: 7
   m_Name: Tower Bomb
   m_TagString: Tower Projectile
@@ -304,3 +305,17 @@ CapsuleCollider:
   m_Height: 0.5
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4348385123500203067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7315434669042597335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9856417320905fd46968fe0aaeb6f43b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  explosionPoolName: Explosion Pool
