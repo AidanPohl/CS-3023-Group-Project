@@ -25,7 +25,8 @@ public class Attack_Bomb : Attack
         GameObject GOExplosion = ExplosionPool.GetObject();
         GOExplosion.transform.position = transform.position;
         GOExplosion.GetComponent<Attack_Explosion>().Boom();
-        GOExplosion.SetActive(false);
+        GOExplosion.SetActive(true);
+        gameObject.SetActive(false);
         return damage;
     }
 

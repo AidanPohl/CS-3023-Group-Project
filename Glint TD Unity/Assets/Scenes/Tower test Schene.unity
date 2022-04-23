@@ -684,6 +684,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1741064837}
+  - component: {fileID: 1741064839}
   - component: {fileID: 1741064836}
   - component: {fileID: 1741064835}
   - component: {fileID: 1741064834}
@@ -787,6 +788,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 3
+--- !u!114 &1741064839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741064833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34cac7ae9b9090049a681bf08e9ad38d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  score: 100
+  health: 10
+  waypoints: []
+  devFrozen: 1
 --- !u!1001 &1872678407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -845,6 +863,10 @@ PrefabInstance:
     - target: {fileID: 1177107081572012241, guid: c7ea25b2775f3954cac7ed46c52970c9, type: 3}
       propertyPath: m_Name
       value: Bomb Tower
+      objectReference: {fileID: 0}
+    - target: {fileID: 4419468806273758680, guid: c7ea25b2775f3954cac7ed46c52970c9, type: 3}
+      propertyPath: devActivate
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7ea25b2775f3954cac7ed46c52970c9, type: 3}

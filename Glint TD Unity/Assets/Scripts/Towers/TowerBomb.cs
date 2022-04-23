@@ -17,7 +17,7 @@ public class TowerBomb : TowerProjectile
 
     override protected void Awake(){
         base.Awake();
-        transCannon = transform.Find("Turret/Cannon");
+        transCannon = transform.Find("Cannon");
         fireFrom = transCannon.position;                //fires from cannon instead of turret;
     }//end Awake();
 

@@ -20,30 +20,34 @@ public class Enemy : MonoBehaviour
 
     public Transform[] waypoints;
 
-
+    public bool devFrozen;          //DEVTOOL:Does not move or die
     private Transform target;
     private int wavepointIndex = 0;
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+        if(!devFrozen){
         target = waypoints[0];
+        } //end if(!devFrozen)
 
-    }
+    }//end Start
 
     // Update is called once per frame
     void Update()
-    {   
-        if(health <= 0){
-            Die();
-        }
-        Vector3 dir = target.position - transform.position;
-        transform.Translate(dir.normalized * speed * Time.deltaTime);
+    {   if(!devFrozen){
+            if(health <= 0){
+                Die();
+            }else{
+                Vector3 dir = target.position - transform.position;
+                transform.Translate(dir.normalized * speed * Time.deltaTime);
 
-        if(Vector3.Distance(transform.position, target.position) <= 0.2f){
-            GetNextWaypoint();
-        }
-    }
+                if(Vector3.Distance(transform.position, target.position) <= 0.2f){
+                    GetNextWaypoint();
+                }//end if (Vector3.Distance(transform.position, target.position) <= 0.2f)
+            }//end if (health<=0) else
+        }//end if (!devFrozen)
+    }//end Update()
 
     void GetNextWaypoint()
     {
@@ -63,7 +67,8 @@ public class Enemy : MonoBehaviour
 
 
     void OnCollisionEnter(Collision other){ ///AP
-        if (other.gameObject.tag == "Projectile"){
+        Debug.Log("Collision!");
+        if (other.gameObject.tag == "Tower Projectile"){
             health -= other.gameObject.GetComponent<Attack>().EnemyCollision();
         }
     }

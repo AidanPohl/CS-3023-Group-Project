@@ -57,7 +57,7 @@ public class TowerLaser : Tower
 
         for(int i = 1; i <= interPoints; i++){//adds interpoints
             laserLine.positionCount++;
-            Vector3 randDelta = Vector3.MoveTowards(laserLine.GetPosition(i-1),target.position,dist/interPoints);//creates inter point with slightly randomized postion
+            Vector3 randDelta = Vector3.MoveTowards(laserLine.GetPosition(i-1),target.position,dist/(interPoints+1));//creates inter point with slightly randomized postion
             randDelta.x += Random.Range(-.5f,.5f); //randomizes x value
             randDelta.z += Random.Range(-.5f,.5f); //randomizes y value
             laserLine.SetPosition(i,randDelta);// sets the interpoint
