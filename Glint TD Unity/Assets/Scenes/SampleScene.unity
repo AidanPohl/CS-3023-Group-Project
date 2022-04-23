@@ -420,6 +420,12 @@ GameObject:
   - component: {fileID: 40095227}
   - component: {fileID: 40095226}
   - component: {fileID: 40095225}
+  - component: {fileID: 1204718539}
+  - component: {fileID: 1204718538}
+  - component: {fileID: 1204718537}
+  - component: {fileID: 1204718536}
+  - component: {fileID: 1204718535}
+  - component: {fileID: 1204718540}
   m_Layer: 0
   m_Name: Cube (95)
   m_TagString: Untagged
@@ -17018,6 +17024,8 @@ SphereCollider:
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2139814003
 MeshRenderer:
+--- !u!114 &1204718540
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -17065,3 +17073,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2139814000}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_GameObject: {fileID: 1204718534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34cac7ae9b9090049a681bf08e9ad38d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  score: 100
+  health: 10
