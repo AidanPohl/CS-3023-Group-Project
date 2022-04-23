@@ -31,6 +31,9 @@ public class TowerProjectile : Tower
     {
         base.Awake();
         attackPool = GameObject.Find(attackPoolName).GetComponent<ObjectPool>();
+        if(!attackPool){
+            Debug.Log(attackPoolName + "does not exist!");
+        }
     }
 
     new void Activate()
