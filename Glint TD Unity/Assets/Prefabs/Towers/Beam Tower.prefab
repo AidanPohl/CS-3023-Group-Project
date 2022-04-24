@@ -301,6 +301,7 @@ GameObject:
   - component: {fileID: 470807693338523996}
   - component: {fileID: -3231928165402365691}
   - component: {fileID: 642718533806993054}
+  - component: {fileID: -1370935417718979131}
   m_Layer: 6
   m_Name: Beam Tower
   m_TagString: Tower
@@ -317,10 +318,11 @@ Transform:
   m_GameObject: {fileID: 1177107081572012241}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_Children:
   - {fileID: 5283067502118306189}
   - {fileID: 5952959910246241431}
+  - {fileID: 458852023069387084}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -350,9 +352,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   devActivate: 0
-  footprint: 1
   enemiesInRange: []
   range: 5
+  placeable: 0
   attacksPerSecond: 3
   attackStrength: 1
   projectileSpeed: 10
@@ -471,6 +473,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-1370935417718979131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177107081572012241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72d4de186fab85541b1e56670583ff79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 1
+  keepOnScreen: 1
+  isOnScreen: 1
+  offLeft: 0
+  offRight: 0
+  offUp: 0
+  offDown: 0
+  camWidth: 0
+  camHeight: 0
 --- !u!1 &2862457392031234182
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,3 +587,77 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &3119865952358183090
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 458852023069387084}
+  - component: {fileID: 5821030083483172245}
+  - component: {fileID: 3523220088335730522}
+  - component: {fileID: 6361984156256901492}
+  m_Layer: 6
+  m_Name: Footprint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &458852023069387084
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3119865952358183090}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 987628263297853736}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5821030083483172245
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3119865952358183090}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 3, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &3523220088335730522
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3119865952358183090}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &6361984156256901492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3119865952358183090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca6eeed9f0bb4a34cb15af6e889df65e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -3,7 +3,7 @@
  * Date Created: April 21, 2022
  * 
  * Last Edited By:
- * Date Last Edited: April 21, 2022
+ * Date Last Edited: April 24, 2022
  * 
  * Description: Generic Tower
  * */
@@ -18,13 +18,14 @@ public class Tower : MonoBehaviour
     [Header("Tower Stats")]
     protected bool active = false;
     public bool devActivate = false;
-    public float footprint = 1;
 
     protected SphereCollider rangeCollider;
     protected Transform transTurret;
     protected Transform transBase;
     public List<Transform> enemiesInRange = new List<Transform>();
     public float range = 0f; //How far it can see/attack
+
+    public bool placeable;
  
 
     
@@ -80,6 +81,7 @@ public class Tower : MonoBehaviour
             enemiesInRange.Remove(collGO.transform);
         }
     }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, range);

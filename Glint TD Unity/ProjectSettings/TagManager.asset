@@ -8,6 +8,8 @@ TagManager:
   - Tower Projectile
   - Tower
   - Tower Pulse
+  - Waypoint
+  - Path Tile
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - UI
   - Tower
   - Projectile
-  - 
+  - Editor Only
   - 
   - 
   - 

@@ -3,7 +3,7 @@
  * Created: 02/23/2022
  * 
  * Last Edited By: Aidan Pohl
- * Last Edited: 04/23/2022
+ * Last Edited: 04/24/2022
  * 
  * Description: Game Managaer
  * */
@@ -37,10 +37,14 @@ public class GameManager : MonoBehaviour
 public string gameTitle = "Glint TD";
 public string gameCredits = "Made by: Aidan Pohl, ";
 public string copywriteDate = "Copyright " + thisDate;
-public static int score = 0;
-public static int lives = 50;
+
 
 [Header("Game Settings")]
+public int level = 0;
+public int lives = 50;
+public int money = 0;
+public int score = 0;
+
 [Header("Scene Settings")]
 [Tooltip("Name of start scene")]
 public string startString;
@@ -59,7 +63,7 @@ public string gameMap;
 private static string thisDate = System.DateTime.Now.ToString("yyyy"); //todays date as string
 
 //High Score
-[HideInInspector] public static int highScore = 0;
+[HideInInspector] public int highScore = 0;
 
     /***Methods***/
     void Awake(){
