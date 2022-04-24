@@ -3,7 +3,7 @@
  * Date Created: April 20, 2022
  * 
  * Last Edited By:
- * Date Last Edited: April 21, 2022
+ * Date Last Edited: April 23, 2022
  * 
  8 Description: Funny object do the pulse
  * */
@@ -21,6 +21,8 @@ public class TowerPulsar : Tower
     private GameObject pulsar;
     private SphereCollider pulse;
     private bool pulsing;
+    public AudioClip pulseSound;
+    AudioSource audioSource;
 
     private Color coreColor;
     private Color coreColorTransparent;
@@ -36,6 +38,7 @@ public class TowerPulsar : Tower
         coreColorTransparent = coreColor;
         coreColorTransparent.a =0;
         pulsar.GetComponent<Attack_Pulse>().damage = attackStrength;
+        audioSource = GetComponent<AudioSource>();
 
 
     }
@@ -66,7 +69,9 @@ public class TowerPulsar : Tower
 
 
     private void Pulse()
-    {   
+    {   if(audioSource!=null && pulseSound!=null){
+        audioSource.PlayOneShot(pulseSound);
+    }
         radius = .1f;
         pulsar.transform.localScale = Vector3.one*.1f;
         Debug.Log(enemiesInRange.Count + "enemies");

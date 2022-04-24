@@ -19,16 +19,22 @@ public class TowerLaser : Tower
     public LineRenderer laserLine;
     private Vector3 startPos;
     private Color laserColor;
+    public AudioClip laserSound;
+    AudioSource audioSource;
 
     override protected void Awake(){
         base.Awake();
-        laserLine = gameObject.GetComponent<LineRenderer>();
+        laserLine = GetComponent<LineRenderer>();
         laserLine.useWorldSpace = true;
         laserColor = laserLine.material.color;
+        audioSource = GetComponent<AudioSource>();
     }
     override protected void Update(){
         base.Update();
         FadeLighting();
+        if(!target){
+            audioSource.Stop();//stop lasersound if not target
+        }
     }
     override public void Activate()
     {   
@@ -50,6 +56,9 @@ public class TowerLaser : Tower
     }
 
     private void DrawLightning(){
+        if (audioSource != null && laserSound != null&& !audioSource.isPlaying){//play the laser sound if not already
+            audioSource.PlayOneShot(laserSound);
+        }
         laserLine.positionCount = 1; //resets Line positon count
         laserLine.material.color = laserColor; //sets base laser color
         float dist = Vector3.Distance(laserLine.GetPosition(0),target.position);//gets distance between lasercore and the target

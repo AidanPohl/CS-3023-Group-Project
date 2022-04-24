@@ -353,11 +353,12 @@ MonoBehaviour:
   footprint: 1
   enemiesInRange: []
   range: 5
-  attacksPerSecond: 1
+  attacksPerSecond: 3
   attackStrength: 1
-  projectileSpeed: 5
+  projectileSpeed: 10
   attackPoolName: Beam Pool
   attackPool: {fileID: 0}
+  projectileSound: {fileID: 8300000, guid: 3025a92ec0512d446a8f77b3b53e25f6, type: 3}
 --- !u!54 &-3231928165402365691
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -384,9 +385,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3025a92ec0512d446a8f77b3b53e25f6, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0

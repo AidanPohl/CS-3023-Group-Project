@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 [RequireComponent(typeof(SphereCollider))]
+[RequireComponent(typeof(AudioSource))]
 public class TowerProjectile : Tower
 {
     /**VARIABLES**/
@@ -23,6 +24,8 @@ public class TowerProjectile : Tower
     public float projectileSpeed = 1;//how fast the projectiles move
     public string attackPoolName;//name of the projectile object pool
     public ObjectPool attackPool;//where it gets its projectiles from
+    public AudioClip projectileSound;
+    AudioSource audioSource;
 
     protected Transform targetProtect;//what the tower is protecting (decides what to target)
     protected Transform target = null;//target to fire at
@@ -32,6 +35,7 @@ public class TowerProjectile : Tower
     override protected void Awake()
     {
         base.Awake();
+        audioSource = gameObject.GetComponent<AudioSource>();
         try{
         attackPool = GameObject.Find(attackPoolName).GetComponent<ObjectPool>(); // gets Attack pool
         } catch(Exception e){
@@ -86,6 +90,11 @@ public class TowerProjectile : Tower
             projGO.transform.LookAt(target);                                //point projectile at target
             rb.velocity = toEnemy * projectileSpeed;                        //send projectile at speed towards current target position
             projGO.SetActive(true);
+
+            if(audioSource != null && projectileSound != null)
+            {
+                audioSource.PlayOneShot(projectileSound);//play the projectile sound
+            }
         }//end if else
     }//end ProjectileFire()
 
