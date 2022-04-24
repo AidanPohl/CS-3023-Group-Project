@@ -58,24 +58,12 @@ public string gameMap;
 [HideInInspector] public static Stopwatch timer = new Stopwatch();
 private static string thisDate = System.DateTime.Now.ToString("yyyy"); //todays date as string
 
-//Best time in three parts
-[HideInInspector] public static int bestHours = 0;
-[HideInInspector] public static int bestMins = 0;
-[HideInInspector] public static int bestSecs = 0;
-[HideInInspector] public static TimeSpan BestTime;
+//High Score
 [HideInInspector] public static int highScore = 0;
 
     /***Methods***/
     void Awake(){
-    CheckGameManagerIsInScene();
-
-        //Checks for BestTime in Player pref
-        if (PlayerPrefs.HasKey("BestHours"))
-        {
-            bestHours = PlayerPrefs.GetInt("BestHours");
-            bestMins = PlayerPrefs.GetInt("BestMins");
-            bestSecs = PlayerPrefs.GetInt("BestSecs");
-        } 
+        CheckGameManagerIsInScene();
         //Checks for Highscore in Player Prefs
         if (PlayerPrefs.HasKey("HighScore")){
             highScore = PlayerPrefs.GetInt("HighScore");
@@ -83,19 +71,12 @@ private static string thisDate = System.DateTime.Now.ToString("yyyy"); //todays 
 
         // Assign the values to Player Prefs
         PlayerPrefs.SetInt("HighScore",highScore);
-        PlayerPrefs.SetInt("BestHours", bestHours);
-        PlayerPrefs.SetInt("BestMins", bestMins);
-        PlayerPrefs.SetInt("BestSecs", bestSecs);
-        BestTime =  new TimeSpan(bestHours, bestMins, bestSecs);
     }//end Awake()
 
 void Update(){ 
     UnityEngine.Debug.Log(gameState);
     //check for new highscore and updates as neccessary
-    if(score>highScore){
-        highScore=score;
-        PlayerPrefs.SetInt("HighScore",highScore);
-    }
+
 
     if(Input.GetKey("escape")){ExitGame();} //esc key to exit game
 
