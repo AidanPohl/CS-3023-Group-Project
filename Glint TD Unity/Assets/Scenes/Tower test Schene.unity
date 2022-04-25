@@ -392,10 +392,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 470807693338523996, guid: b80607743ce79b447adc4ed83a4fa5e9, type: 3}
-      propertyPath: devActivate
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 987628263297853736, guid: b80607743ce79b447adc4ed83a4fa5e9, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -820,10 +816,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 470807693338523996, guid: c7ea25b2775f3954cac7ed46c52970c9, type: 3}
-      propertyPath: devActivate
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 987628263297853736, guid: c7ea25b2775f3954cac7ed46c52970c9, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -871,10 +863,6 @@ PrefabInstance:
     - target: {fileID: 1177107081572012241, guid: c7ea25b2775f3954cac7ed46c52970c9, type: 3}
       propertyPath: m_Name
       value: Bomb Tower
-      objectReference: {fileID: 0}
-    - target: {fileID: 4419468806273758680, guid: c7ea25b2775f3954cac7ed46c52970c9, type: 3}
-      propertyPath: devActivate
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7ea25b2775f3954cac7ed46c52970c9, type: 3}

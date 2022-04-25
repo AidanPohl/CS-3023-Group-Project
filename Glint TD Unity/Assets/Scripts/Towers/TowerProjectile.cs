@@ -29,7 +29,7 @@ public class TowerProjectile : Tower
 
     protected Transform targetProtect;//what the tower is protecting (decides what to target)
     protected Transform target = null;//target to fire at
-    protected Vector3 fireFrom;//where the projectiles launch from
+    protected Transform fireFrom;//where the projectiles launch from
 
     // Start is called before the first frame update
     override protected void Awake()
@@ -41,7 +41,7 @@ public class TowerProjectile : Tower
         } catch(Exception e){
             Debug.LogError(e);
         }
-        fireFrom = transTurret.position;
+        fireFrom = transTurret;
     }//end Awake();
 
     override public void Activate()
@@ -80,7 +80,7 @@ public class TowerProjectile : Tower
             Debug.Log(gameObject.name + ": Firing at "+target.gameObject.name);
             Debug.Log(target);
             GameObject projGO = attackPool.POOL.GetObject();                //Gets a new Projectile
-            projGO.transform.position = fireFrom;                           //sets projectile initial position
+            projGO.transform.position = fireFrom.position;                           //sets projectile initial position
             projGO.GetComponent<Attack>().damage = attackStrength;          //Set projectile damage
             Vector3 toEnemy = target.position - projGO.transform.position;  // Gets the direction between tower and target
             toEnemy.Normalize();                                            //normalizes direction vector

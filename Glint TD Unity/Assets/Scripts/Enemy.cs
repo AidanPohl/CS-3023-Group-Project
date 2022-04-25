@@ -14,23 +14,29 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [Header("Enemy Settings")]
+    private GameManager gm;
     public float speed = 10f;
     public int score = 100;
     public float health = 10;
-
-    public Transform[] waypoints;
-
+    public GameObject waypointsGO;
+    public List<GameObject> waypoints;
     public bool devFrozen;          //DEVTOOL:Does not move or die
     private Transform target;
-    private int wavepointIndex = 0;
+    private int wavepointIndex = 1;
 
+    void Awake(){
+        gm = GameManager.GM;
+        if(!waypointsGO){
+            waypointsGO = GameObject.Find("Waypoints");
+        }
+
+    }
+    
     // Start is called before the first frame update
     void Start()
-    {   
-        if(!devFrozen){
-        target = waypoints[0];
-        } //end if(!devFrozen)
+    {   waypoints = waypointsGO.GetComponent<Waypoints>().waypoints;
 
+        target = waypoints[wavepointIndex].transform;
     }//end Start
 
     // Update is called once per frame
@@ -39,10 +45,9 @@ public class Enemy : MonoBehaviour
             if(health <= 0){
                 Die();
             }else{
-                Vector3 dir = target.position - transform.position;
-                transform.Translate(dir.normalized * speed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position,target.position,speed * Time.deltaTime);
 
-                if(Vector3.Distance(transform.position, target.position) <= 0.2f){
+                if(transform.position == target.position){
                     GetNextWaypoint();
                 }//end if (Vector3.Distance(transform.position, target.position) <= 0.2f)
             }//end if (health<=0) else
@@ -51,13 +56,14 @@ public class Enemy : MonoBehaviour
 
     void GetNextWaypoint()
     {
-        if (wavepointIndex >= waypoints.Length-1)//check if reached the end of the array
+        if (wavepointIndex >= waypoints.Count-1) //check if reached the end of the array
         {   
+            //gm.lives -= (int)health;
             Destroy(gameObject);
         }else
         {
         wavepointIndex++;
-        target = waypoints[wavepointIndex];
+        target = waypoints[wavepointIndex].transform;
         }
     }
 
