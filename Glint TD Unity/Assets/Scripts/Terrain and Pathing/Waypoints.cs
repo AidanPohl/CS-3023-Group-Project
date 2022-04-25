@@ -34,17 +34,17 @@ public class Waypoints : MonoBehaviour
             curVerPos = vertices[i].transform.position;                  //position of current vertex
             nxtVerPos = vertices[i+1].transform.position;               //position of next vertex
             vertexDist = Vector3.Distance(curVerPos,nxtVerPos);         //distance btween current and next vertex
-            Debug.Log(vertexDist);
+            //Debug.Log(vertexDist);
             float numWaypoints = Mathf.Round((vertexDist/waypointSeperation))-1;  //number of waypoints to add between vertices
-            Debug.Log(numWaypoints);
+            //Debug.Log(numWaypoints);
             for(int j = 1; j <= numWaypoints; j++){//inner loop for each waypoint
                 GameObject newWaypoint = Instantiate(waypointPrefab,transform); //instantiate new waypoint
-                Debug.Log(((j/(numWaypoints+1))*vertexDist));
+                //Debug.Log(((j/(numWaypoints+1))*vertexDist));
                 newWaypoint.transform.position = Vector3.MoveTowards(curVerPos,nxtVerPos,((j/(numWaypoints+1))*vertexDist));   //set position of new waypoint
                 newWaypoint.name = "Waypoint "+waypointNum;
                 waypointNum++;
                 waypoints.Add(newWaypoint);
-                Debug.Log(newWaypoint.name);
+                //Debug.Log(newWaypoint.name);
             }//end innter for looop
         }//end outer for loop
         waypoints.Add(vertices[vertices.Length-1]);

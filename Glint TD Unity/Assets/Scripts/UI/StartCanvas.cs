@@ -31,7 +31,7 @@ public class StartCanvas : MonoBehaviour
     }//end Start()
 
     public void StartGame(){
-        gm.StartGame();
+        gm.GameScene();
     }//end StartGame()
 
     public void ExitGame(){

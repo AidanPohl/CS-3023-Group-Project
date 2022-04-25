@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3292573992543899550}
   - component: {fileID: 557821993889146585}
   - component: {fileID: 5844120312634384100}
+  - component: {fileID: 642358644254334967}
   m_Layer: 3
   m_Name: Grue
   m_TagString: Enemy
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 2131581336701319094}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: db095bdf49f96fe4891044793786189d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -92,7 +93,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2131581336701319094}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -110,12 +111,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
-  speed: 10
-  score: 100
-  health: 10
+  speed: 1
+  score: 10
+  health: 1
   waypointsGO: {fileID: 0}
   waypoints: []
   devFrozen: 0
+  waypointIndex: 1
 --- !u!114 &5844120312634384100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,3 +132,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolGO: {fileID: 1898420639933188414, guid: 6f32cf17f11b785429259f7721dd716a, type: 3}
   pool: {fileID: 0}
+--- !u!54 &642358644254334967
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131581336701319094}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

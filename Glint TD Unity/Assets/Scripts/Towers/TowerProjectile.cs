@@ -105,7 +105,7 @@ public class TowerProjectile : Tower
         Transform closestEnemy = null;
 
         foreach (Transform enemy in enemiesInRange) //checks which enemy is closest to targetprotect
-        {      if(target.gameObject.active){
+        {      if(enemy.gameObject.active){
             Debug.Log(gameObject.name+":  Checking "+enemy.gameObject.name+" position...");
             float distToEnemy = Vector3.Distance(targetProtect.position, enemy.position);
             if (distToEnemy < minDistance)

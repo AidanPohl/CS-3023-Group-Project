@@ -41,7 +41,7 @@ public class MouseGrab : MonoBehaviour
     }
 
     void LateUpdate(){
-        if(towerTrans && towerScript.placeable && bndChk.isOnScreen){
+        if(transform.childCount >0){        if(towerTrans && towerScript.placeable && bndChk.isOnScreen){
             canPlace = true;
         }else{canPlace = false;}
 
@@ -53,6 +53,7 @@ public class MouseGrab : MonoBehaviour
             Destroy(towerTrans.gameObject);
             gm.money += towerCost;
             Clear();
+        }
         }
     }
 

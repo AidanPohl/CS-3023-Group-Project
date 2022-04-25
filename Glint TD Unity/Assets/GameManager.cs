@@ -77,7 +77,7 @@ private static string thisDate = System.DateTime.Now.ToString("yyyy"); //todays 
     }//end Awake()
 
 void Update(){ 
-    UnityEngine.Debug.Log(gameState);
+    //UnityEngine.Debug.Log(gameState);
     //check for new highscore and updates as neccessary
 
 

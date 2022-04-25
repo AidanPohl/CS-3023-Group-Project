@@ -39,19 +39,20 @@ public class TowerPulsar : Tower
         coreColorTransparent = coreColor;
         coreColorTransparent.a =0;
         pulsar.GetComponent<Attack_Pulse>().damage = attackStrength;
-
+        audioSource = gameObject.GetComponent<AudioSource>();
 
     }
 
     override public void Activate()
     {
         base.Activate();
+        //pulsar.transform.SetParent(null);
         InvokeRepeating("Pulse", 0f, 1/attacksPerSecond); //fires
     }
 
     // Update is called once per frame
     override protected void Update()
-    {   
+    {   pulse.radius =.5f;
         base.Update();
         Quaternion tureetRot = transTurret.rotation;
         Vector3 rot = tureetRot.eulerAngles;
@@ -72,7 +73,7 @@ public class TowerPulsar : Tower
 
         radius = .1f;
         pulsar.transform.localScale = Vector3.one*.1f;
-        Debug.Log(enemiesInRange.Count + "enemies");
+        //Debug.Log(enemiesInRange.Count + "enemies");
         if (enemiesInRange.Count > 0) {
             pulsing = true;
             if(audioSource!=null && pulseSound!=null){audioSource.PlayOneShot(pulseSound);}//plays pulse sound

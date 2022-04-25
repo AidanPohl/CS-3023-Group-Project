@@ -51,7 +51,7 @@ public class SpawnEnemy : MonoBehaviour
     IEnumerator SpawnDelay()
     {
         sEnemy();
-        yield return new WaitForSeconds(Mathf.Pow(spawnInteval,(1-difficulty)));
+        yield return new WaitForSeconds(Mathf.Pow(spawnInteval,(1-(difficulty*10))));
         StartCoroutine(SpawnDelay());
 
     }
@@ -61,7 +61,7 @@ public class SpawnEnemy : MonoBehaviour
     {
         GameObject spawnedEnemy = enemyPool.GetObject();
         spawnedEnemy.transform.position = start.position;
-        spawnedEnemy.GetComponent<Enemy>().Renew(enemyHealth,enemySpeed,enemyScore+(int)timer.Elapsed.Duration().TotalSeconds);
+        spawnedEnemy.GetComponent<Enemy>().Renew(enemyHealth+(int)(difficulty*10),enemySpeed+difficulty,enemyScore+(int)timer.Elapsed.Duration().TotalSeconds);
     }
 
 }

@@ -353,7 +353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   devActivate: 0
   enemiesInRange: []
-  range: 5
+  range: 2
   placeable: 0
   attacksPerSecond: 3
   attackStrength: 1

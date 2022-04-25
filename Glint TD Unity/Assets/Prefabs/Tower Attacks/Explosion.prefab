@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566dd264c6d8d4d41bb399ef0c07ee6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 3
   radius: 3
   exploding: 0
   explosionSound: {fileID: 8300000, guid: a04b6178036b7a04db293a54b4eb2be3, type: 3}

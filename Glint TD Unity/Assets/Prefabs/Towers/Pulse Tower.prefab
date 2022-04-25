@@ -246,6 +246,7 @@ MonoBehaviour:
   placeable: 0
   attacksPerSecond: 1
   attackStrength: 1
+  audioSource: {fileID: 0}
   pulseSound: {fileID: 8300000, guid: 4ce862504f622dc48bf7823bd6fd4062, type: 3}
 --- !u!54 &5787478047399131187
 Rigidbody:
@@ -1168,46 +1169,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 987628263297853736}
     m_Modifications:
-    - target: {fileID: 274729789445260225, guid: 15fe0a95ed652904691fd43d5b8d71e3, type: 3}
-      propertyPath: m_Range
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 274729789445260225, guid: 15fe0a95ed652904691fd43d5b8d71e3, type: 3}
-      propertyPath: m_Color.b
-      value: 0.12184001
-      objectReference: {fileID: 0}
-    - target: {fileID: 274729789445260225, guid: 15fe0a95ed652904691fd43d5b8d71e3, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 274729789445260225, guid: 15fe0a95ed652904691fd43d5b8d71e3, type: 3}
-      propertyPath: m_Color.r
-      value: 0.109803915
-      objectReference: {fileID: 0}
-    - target: {fileID: 274729789445260225, guid: 15fe0a95ed652904691fd43d5b8d71e3, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 274729789445260225, guid: 15fe0a95ed652904691fd43d5b8d71e3, type: 3}
-      propertyPath: m_DrawHalo
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 274729789445260225, guid: 15fe0a95ed652904691fd43d5b8d71e3, type: 3}
-      propertyPath: m_Intensity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 274729789445260225, guid: 15fe0a95ed652904691fd43d5b8d71e3, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 274729789445260225, guid: 15fe0a95ed652904691fd43d5b8d71e3, type: 3}
-      propertyPath: m_Shadows.m_NearPlane
-      value: 0.099999994
-      objectReference: {fileID: 0}
-    - target: {fileID: 775943312998387045, guid: 15fe0a95ed652904691fd43d5b8d71e3, type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7315434669042597335, guid: 15fe0a95ed652904691fd43d5b8d71e3, type: 3}
       propertyPath: m_Name
       value: Tower pulsar
@@ -1256,8 +1217,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -1195604720444728130, guid: 15fe0a95ed652904691fd43d5b8d71e3, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15fe0a95ed652904691fd43d5b8d71e3, type: 3}
 --- !u!4 &300277905807955868 stripped
 Transform:
