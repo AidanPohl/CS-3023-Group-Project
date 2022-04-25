@@ -1,3 +1,15 @@
+/***
+*
+*  Made By : Jason Alfrey
+*  Created : April 17, 2022
+*  
+*
+*   Last Edited By: Jason Alfrey
+*   Last Edited: April 16, 2022
+* 
+*   Description: Used to implement the waypoint behavior for the project. 
+***/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
