@@ -3,7 +3,7 @@
  * Date Created: April 4, 2022
  * 
  * Last Edited By:
- * Date Last Edited: April 23, 2022
+ * Date Last Edited: April 25, 2022
  * 
  * Description: Funny object do the shooty shoot
  * */
@@ -58,16 +58,13 @@ public class TowerProjectile : Tower
         InvokeRepeating("Fire", 0.5f, 1/attacksPerSecond); //finds new target and fires every 1/attackspersecond seconds
     }//end Activate();
 
-    // Update is called once per frame
-    override protected void Update()
-    {
-        base.Update();
-        if (target) //Point turret towards target
+
+    virtual protected void LateUpdate(){
+        if (target && target.gameObject.active) //Point turret towards target
         {
             transTurret.LookAt(target);
         }//end if(target)
-    }//end Update()
-
+    }
 
     private void Fire() //Fires a projectile at the current target
     {  target = UpdateTarget();                                             //get new target
@@ -100,7 +97,6 @@ public class TowerProjectile : Tower
 
     private Transform UpdateTarget() //updates the current target
     {
-        Debug.Log(gameObject.name+": "+enemiesInRange.Count +" enemies in range;");
         if (enemiesInRange.Count == 0) //if no enemies in range, no target
         {
             return null;
@@ -109,7 +105,7 @@ public class TowerProjectile : Tower
         Transform closestEnemy = null;
 
         foreach (Transform enemy in enemiesInRange) //checks which enemy is closest to targetprotect
-        {   
+        {      if(target.gameObject.active){
             Debug.Log(gameObject.name+":  Checking "+enemy.gameObject.name+" position...");
             float distToEnemy = Vector3.Distance(targetProtect.position, enemy.position);
             if (distToEnemy < minDistance)
@@ -117,7 +113,7 @@ public class TowerProjectile : Tower
                 minDistance = distToEnemy;
                 closestEnemy = enemy;
             }
-
+        }
         }
         return closestEnemy;
     }//end UpdateTarget()

@@ -17,17 +17,17 @@ using System.Diagnostics;
 
 public class SpawnEnemy : MonoBehaviour
 {   GameManager gm;
-    public float enemySpeed = 5f;
-    public float enemyHealth = 10f;
+    public float enemySpeed = 1f;
+    public int enemyHealth = 1;
+    public int enemyScore = 10;
     public float spawnInteval = 2f;
-    public List<GameObject> prefabs;
 
-
+    public float difficulty;
     public Stopwatch timer;
-    public GameObject enemy;
+    public GameObject enemyPoolGO;
     public Transform start;
     private int initialIndex; 
-    
+    private ObjectPool enemyPool;
 
 
 
@@ -42,12 +42,16 @@ public class SpawnEnemy : MonoBehaviour
     {
        gm = GameManager.GM;
        timer = GameManager.timer;
+       enemyPool = enemyPoolGO.GetComponent<ObjectPool>();
     }
 
+    void Update(){
+        difficulty = (float)timer.Elapsed.Duration().TotalSeconds/100;
+    }
     IEnumerator SpawnDelay()
     {
         sEnemy();
-        yield return new WaitForSeconds(spawnInteval);
+        yield return new WaitForSeconds(Mathf.Pow(spawnInteval,(1-difficulty)));
         StartCoroutine(SpawnDelay());
 
     }
@@ -55,8 +59,9 @@ public class SpawnEnemy : MonoBehaviour
 
     void sEnemy()
     {
-        GameObject spawnedEnemy = Instantiate(enemy);
+        GameObject spawnedEnemy = enemyPool.GetObject();
         spawnedEnemy.transform.position = start.position;
+        spawnedEnemy.GetComponent<Enemy>().Renew(enemyHealth,enemySpeed,enemyScore+(int)timer.Elapsed.Duration().TotalSeconds);
     }
 
 }

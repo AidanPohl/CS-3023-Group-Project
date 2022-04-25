@@ -95,10 +95,13 @@ void Update(){
 public void StartGame(){
     gameState = gameStates.Playing;//playing game state
     timer = Stopwatch.StartNew();
-    SceneManager.LoadScene(gameMap); //load first level
+    GameObject.Find("Enemy Spawner").GetComponent<SpawnEnemy>().StartSpawning();
 
 }//end StartGame();
 
+public void GameScene(){
+    SceneManager.LoadScene(gameMap); //load game Scene
+}
 public void ExitGame(){
     Application.Quit();
     UnityEngine.Debug.Log("Exited Game");

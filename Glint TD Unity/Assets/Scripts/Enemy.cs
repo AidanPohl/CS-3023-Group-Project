@@ -7,6 +7,7 @@
 *   Last Edited By: Aidan Pohl
 *   Last Edited: April 24, 2022
 ***/
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,7 +23,7 @@ public class Enemy : MonoBehaviour
     public List<GameObject> waypoints;
     public bool devFrozen;          //DEVTOOL:Does not move or die
     private Transform target;
-    private int wavepointIndex = 1;
+    public int waypointIndex = 1;
 
     void Awake(){
   
@@ -37,7 +38,7 @@ public class Enemy : MonoBehaviour
     {   gm = GameManager.GM;
         waypoints = waypointsGO.GetComponent<Waypoints>().waypoints;
 
-        target = waypoints[wavepointIndex].transform;
+        target = waypoints[waypointIndex].transform;
     }//end Start
 
     // Update is called once per frame
@@ -46,10 +47,12 @@ public class Enemy : MonoBehaviour
             if(health <= 0){
                 Die();
             }else{
+            
                 transform.position = Vector3.MoveTowards(transform.position,target.position,speed * Time.deltaTime);
 
-                if(transform.position == target.position){
+                if(Vector3.Distance(transform.position,target.position)<.01f){
                     GetNextWaypoint();
+                
                 }//end if (Vector3.Distance(transform.position, target.position) <= 0.2f)
             }//end if (health<=0) else
         }//end if (!devFrozen)
@@ -57,22 +60,33 @@ public class Enemy : MonoBehaviour
 
     void GetNextWaypoint()
     {
-        if (wavepointIndex >= waypoints.Count-1) //check if reached the end of the array
+        if (waypointIndex >= waypoints.Count-1) //check if reached the end of the array
         {   
             gm.SubLives(health);
 
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }else
         {
-        wavepointIndex++;
-        target = waypoints[wavepointIndex].transform;
+        waypointIndex++;
+        target = waypoints[waypointIndex].transform;
         }
     }
 
     void Die(){
-
+            gm.score += score;
+            gm.money += score/10;
+            gameObject.SetActive(false);
+            target = null;
     }
 
+    public void Renew(int health, float speed, int score){
+        this.health = health;
+        this.speed = speed;
+        this.score = score;
+        waypointIndex = 1;
+        waypoints = waypointsGO.GetComponent<Waypoints>().waypoints;
+        target = waypoints[1].transform;
+    }
 
     void OnCollisionEnter(Collision other){ ///AP
         Debug.Log("Collision!");

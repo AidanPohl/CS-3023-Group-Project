@@ -24,7 +24,8 @@ public class PoolReturn : MonoBehaviour
     private void OnDisable()
     {
         if (pool != null)
-        {
+        {   
+            transform.position = poolGO.transform.position;
             pool.ReturnObject(this.gameObject); //return this object to pool
         }
     }

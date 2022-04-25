@@ -21,11 +21,9 @@ public class TowerBomb : TowerProjectile
         fireFrom = transCannon;                //fires from cannon instead of turret;
     }//end Awake();
 
-    // Update is called once per frame
-    override protected void Update()
-    {
-        base.Update();
-        if(target){
+
+    override protected void LateUpdate(){
+                if(target && target.gameObject.active){
             Vector3 turretRot = transTurret.rotation.eulerAngles;
             turretRot.x = 0;
             turretRot.z = 0;

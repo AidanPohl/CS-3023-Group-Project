@@ -113,6 +113,10 @@ MonoBehaviour:
   gameTitle: Glint TD
   gameCredits: 'Made by: Aidan Pohl, Garron Denney, Jason Alfrey, Xingzhou Li'
   copywriteDate: Copyright 2022
+  lives: 50
+  money: 200
+  score: 0
   startString: Start Screen
   endScene: End Screen
   gameMap: Game Map
+  highScore: 0
