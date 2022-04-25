@@ -65,13 +65,19 @@ public class TowerPulsar : Tower
 
 
 
+<<<<<<< Updated upstream
     private void Pulse()
     {   
+=======
+    private void Pulse(){
+
+>>>>>>> Stashed changes
         radius = .1f;
         pulsar.transform.localScale = Vector3.one*.1f;
         Debug.Log(enemiesInRange.Count + "enemies");
         if (enemiesInRange.Count > 0) {
             pulsing = true;
+            if(audioSource!=null && pulseSound!=null){audioSource.PlayOneShot(pulseSound);}//plays pulse sound
         }else{
             pulsing = false;}
     }//end Pulse();
