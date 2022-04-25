@@ -513,10 +513,18 @@ MonoBehaviour:
   devActivate: 0
   footprint: 1
   enemiesInRange: []
+<<<<<<< Updated upstream
   range: 5
   attacksPerSecond: 0.33333334
   attackStrength: 5
   projectileSpeed: 3
+=======
+  range: 3
+  placeable: 0
+  attacksPerSecond: 1
+  attackStrength: 5
+  projectileSpeed: 10
+>>>>>>> Stashed changes
   attackPoolName: Bomb Pool
   attackPool: {fileID: 0}
   transCannon: {fileID: 0}

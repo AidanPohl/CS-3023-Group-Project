@@ -355,7 +355,11 @@ MonoBehaviour:
   range: 5
   attacksPerSecond: 1
   attackStrength: 1
+<<<<<<< Updated upstream
   projectileSpeed: 5
+=======
+  projectileSpeed: 20
+>>>>>>> Stashed changes
   attackPoolName: Beam Pool
 --- !u!54 &-3231928165402365691
 Rigidbody:
@@ -416,7 +420,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.0141509175, g: 0.20656818, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 3
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208

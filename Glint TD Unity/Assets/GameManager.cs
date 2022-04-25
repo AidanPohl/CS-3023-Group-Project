@@ -83,10 +83,15 @@ private static string thisDate = System.DateTime.Now.ToString("yyyy"); //todays 
 
         // Assign the values to Player Prefs
         PlayerPrefs.SetInt("HighScore",highScore);
+<<<<<<< Updated upstream
         PlayerPrefs.SetInt("BestHours", bestHours);
         PlayerPrefs.SetInt("BestMins", bestMins);
         PlayerPrefs.SetInt("BestSecs", bestSecs);
         BestTime =  new TimeSpan(bestHours, bestMins, bestSecs);
+=======
+
+
+>>>>>>> Stashed changes
     }//end Awake()
 
 void Update(){ 
