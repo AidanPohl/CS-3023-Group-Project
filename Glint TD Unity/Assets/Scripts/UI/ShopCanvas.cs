@@ -15,7 +15,7 @@ using UnityEngine.UI;
 
 public class ShopCanvas : MonoBehaviour
 {   
-    GameManager gm;
+    public GameManager gm;
     [Header("Set In Inspector")]
     public Text livesText;
     public Text moneyText;
@@ -44,7 +44,7 @@ public class ShopCanvas : MonoBehaviour
         //update text boxes
         livesText.text = "Lives: "+gm.lives;
         moneyText.text = "Money: "+gm.money;
-        levelText.text = "Round: "+gm.level;
+//        levelText.text = "Round: "+GameManager.level;
 
         //update buttons
         for(int i=0; i<buttons.Length;i++){

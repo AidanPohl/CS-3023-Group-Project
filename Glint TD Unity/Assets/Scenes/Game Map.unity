@@ -1209,7 +1209,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1089955521
 MonoBehaviour:
@@ -1228,7 +1228,7 @@ MonoBehaviour:
   spawnInteval: 2
   prefabs: []
   enemy: {fileID: 0}
-  start: {fileID: 1587346795}
+  start: {fileID: 0}
 --- !u!1 &1105672833
 GameObject:
   m_ObjectHideFlags: 0
@@ -2750,10 +2750,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 557821993889146585, guid: fe23b182271edda408341da93b22b324, type: 3}
-      propertyPath: speed
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2131581336701319094, guid: fe23b182271edda408341da93b22b324, type: 3}
       propertyPath: m_Name
       value: Grue

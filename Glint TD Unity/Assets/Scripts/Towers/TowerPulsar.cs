@@ -25,6 +25,9 @@ public class TowerPulsar : Tower
     private Color coreColor;
     private Color coreColorTransparent;
     private float radius;
+    public AudioSource audioSource;
+    public AudioClip pulseSound;    
+
     // Start is called before the first frame update
     override protected void Awake()
     {
@@ -65,13 +68,8 @@ public class TowerPulsar : Tower
 
 
 
-<<<<<<< Updated upstream
-    private void Pulse()
-    {   
-=======
     private void Pulse(){
 
->>>>>>> Stashed changes
         radius = .1f;
         pulsar.transform.localScale = Vector3.one*.1f;
         Debug.Log(enemiesInRange.Count + "enemies");

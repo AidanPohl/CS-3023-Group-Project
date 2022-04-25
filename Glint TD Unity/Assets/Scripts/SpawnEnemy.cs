@@ -1,12 +1,14 @@
+/***
+*
+*  Made By : Garron Denney
+*  Created : April 24, 2022
+*  
+*
+*   Last Edited By: Aidan Pohl
+*   Last Edited: April 25, 2022
+
 //used for implementing a survival based enemy deployment system
-
-
-
-
-
-
-
-
+***/
 
 using UnityEngine;
 using System.Collections;
@@ -14,14 +16,14 @@ using System.Collections.Generic;
 using System.Diagnostics;
 
 public class SpawnEnemy : MonoBehaviour
-{
+{   GameManager gm;
     public float enemySpeed = 5f;
     public float enemyHealth = 10f;
     public float spawnInteval = 2f;
     public List<GameObject> prefabs;
 
 
-    public static Stopwatch timer = new Stopwatch();
+    public Stopwatch timer;
     public GameObject enemy;
     public Transform start;
     private int initialIndex; 
@@ -38,7 +40,8 @@ public class SpawnEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+       gm = GameManager.GM;
+       timer = GameManager.timer;
     }
 
     IEnumerator SpawnDelay()
@@ -52,7 +55,8 @@ public class SpawnEnemy : MonoBehaviour
 
     void sEnemy()
     {
-        GameObject spawnedEnemy = Instantiate(enemy, start);
+        GameObject spawnedEnemy = Instantiate(enemy);
+        spawnedEnemy.transform.position = start.position;
     }
 
 }

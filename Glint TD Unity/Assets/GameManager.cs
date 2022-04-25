@@ -40,7 +40,6 @@ public string copywriteDate = "Copyright " + thisDate;
 
 
 [Header("Game Settings")]
-public int level = 0;
 public int lives = 50;
 public int money = 0;
 public int score = 0;
@@ -117,4 +116,7 @@ public void StartScreen(){
     gameState=gameStates.StartScreen;
 }//end StartScreen()
 
+public void SubLives(int damage){
+    lives -= damage;
+}
 }
