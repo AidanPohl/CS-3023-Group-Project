@@ -29,4 +29,11 @@ public class PoolReturn : MonoBehaviour
             pool.ReturnObject(this.gameObject); //return this object to pool
         }
     }
+
+    public void Return()
+    {
+        transform.position = poolGO.transform.position;
+        pool.ReturnObject(this.gameObject); //return this object to pool
+        gameObject.SetActive(false);
+    }
 }

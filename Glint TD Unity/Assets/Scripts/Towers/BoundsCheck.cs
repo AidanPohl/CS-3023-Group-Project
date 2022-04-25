@@ -51,26 +51,26 @@ public class BoundsCheck : MonoBehaviour
         isOnScreen = true;
 
         //Right bound check
-        if(pos.x > camWidth - radius-1.6f)
-        {   pos.x = camWidth - radius-1.6f;
+        if(pos.x > camWidth*.75f - radius-1)
+        {   pos.x = camWidth*.75f - radius-1;
             offRight = true;
         }
 
         //Left bound check
-        if (pos.x < -camWidth + radius+.5f) 
-        {   pos.x = -camWidth + radius+.5f;
+        if (pos.x < -camWidth + radius-.5f) 
+        {   pos.x = -camWidth + radius-.5f;
             offLeft = true;
         }
 
         //Top bound check
-        if (pos.z > camHeight - radius) 
-        {   pos.z = camHeight - radius;
+        if (pos.z > camHeight - radius+.5f) 
+        {   pos.z = camHeight - radius+.5f;
             offUp = true;
         }
 
         //Bottom bound check
-        if (pos.z < -camHeight + radius-1) 
-        {   pos.z = -camHeight + radius-1;
+        if (pos.z < -camHeight + radius-.5f) 
+        {   pos.z = -camHeight + radius-.5f;
             offDown = true;
         }
 

@@ -23,6 +23,7 @@ public class Tower : MonoBehaviour
     protected Transform transTurret;
     protected Transform transBase;
     public List<Transform> enemiesInRange = new List<Transform>();
+    protected Transform target;
     public float range = 0f; //How far it can see/attack
 
     public bool placeable;
@@ -59,6 +60,11 @@ public class Tower : MonoBehaviour
             Activate();
         }else if(!devActivate && active){
             Deactivate();
+        }
+        if (target && !target.gameObject.active)
+        {
+            target = null;
+            enemiesInRange.Remove(target);
         }
     }
 
