@@ -3,7 +3,7 @@
  * Created: 02/23/2022
  * 
  * Last Edited By: Aidan Pohl
- * Last Edited: 04/23/2022
+ * Last Edited: 04/24/2022
  * 
  * Description: Game Managaer
  * */
@@ -37,10 +37,13 @@ public class GameManager : MonoBehaviour
 public string gameTitle = "Glint TD";
 public string gameCredits = "Made by: Aidan Pohl, ";
 public string copywriteDate = "Copyright " + thisDate;
-public static int score = 0;
-public static int lives = 50;
+
 
 [Header("Game Settings")]
+public int lives = 50;
+public int money = 0;
+public int score = 0;
+
 [Header("Scene Settings")]
 [Tooltip("Name of start scene")]
 public string startString;
@@ -58,24 +61,12 @@ public string gameMap;
 [HideInInspector] public static Stopwatch timer = new Stopwatch();
 private static string thisDate = System.DateTime.Now.ToString("yyyy"); //todays date as string
 
-//Best time in three parts
-[HideInInspector] public static int bestHours = 0;
-[HideInInspector] public static int bestMins = 0;
-[HideInInspector] public static int bestSecs = 0;
-[HideInInspector] public static TimeSpan BestTime;
-[HideInInspector] public static int highScore = 0;
+//High Score
+[HideInInspector] public int highScore = 0;
 
     /***Methods***/
     void Awake(){
-    CheckGameManagerIsInScene();
-
-        //Checks for BestTime in Player pref
-        if (PlayerPrefs.HasKey("BestHours"))
-        {
-            bestHours = PlayerPrefs.GetInt("BestHours");
-            bestMins = PlayerPrefs.GetInt("BestMins");
-            bestSecs = PlayerPrefs.GetInt("BestSecs");
-        } 
+        CheckGameManagerIsInScene();
         //Checks for Highscore in Player Prefs
         if (PlayerPrefs.HasKey("HighScore")){
             highScore = PlayerPrefs.GetInt("HighScore");
@@ -83,24 +74,12 @@ private static string thisDate = System.DateTime.Now.ToString("yyyy"); //todays 
 
         // Assign the values to Player Prefs
         PlayerPrefs.SetInt("HighScore",highScore);
-<<<<<<< Updated upstream
-        PlayerPrefs.SetInt("BestHours", bestHours);
-        PlayerPrefs.SetInt("BestMins", bestMins);
-        PlayerPrefs.SetInt("BestSecs", bestSecs);
-        BestTime =  new TimeSpan(bestHours, bestMins, bestSecs);
-=======
-
-
->>>>>>> Stashed changes
     }//end Awake()
 
 void Update(){ 
-    UnityEngine.Debug.Log(gameState);
+    //UnityEngine.Debug.Log(gameState);
     //check for new highscore and updates as neccessary
-    if(score>highScore){
-        highScore=score;
-        PlayerPrefs.SetInt("HighScore",highScore);
-    }
+
 
     if(Input.GetKey("escape")){ExitGame();} //esc key to exit game
 
@@ -116,10 +95,13 @@ void Update(){
 public void StartGame(){
     gameState = gameStates.Playing;//playing game state
     timer = Stopwatch.StartNew();
-    SceneManager.LoadScene(gameMap); //load first level
+    GameObject.Find("Enemy Spawner").GetComponent<SpawnEnemy>().StartSpawning();
 
 }//end StartGame();
 
+public void GameScene(){
+    SceneManager.LoadScene(gameMap); //load game Scene
+}
 public void ExitGame(){
     Application.Quit();
     UnityEngine.Debug.Log("Exited Game");
@@ -137,4 +119,7 @@ public void StartScreen(){
     gameState=gameStates.StartScreen;
 }//end StartScreen()
 
+public void SubLives(int damage){
+    lives -= damage;
+}
 }

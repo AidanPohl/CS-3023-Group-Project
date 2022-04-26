@@ -13,29 +13,28 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class TowerLaser : Tower
 {   
+    public Transform target;
     public float attacksPerSecond = 1;
     public int damage;
     public LineRenderer laserLine;
     private Vector3 startPos;
     private Color laserColor;
+    public AudioClip laserSound;
+    AudioSource audioSource;
 
     override protected void Awake(){
         base.Awake();
-        laserLine = gameObject.GetComponent<LineRenderer>();
+        laserLine = GetComponent<LineRenderer>();
         laserLine.useWorldSpace = true;
         laserColor = laserLine.material.color;
+        audioSource = GetComponent<AudioSource>();
     }
-    override protected void Update()
-    {
+    override protected void Update(){
         base.Update();
-
         FadeLighting();
-<<<<<<< Updated upstream
-=======
-        if(!target || !target.gameObject.active){
+        if(!target){
             audioSource.Stop();//stop lasersound if not target
         }
->>>>>>> Stashed changes
     }
     override public void Activate()
     {   
@@ -47,17 +46,19 @@ public class TowerLaser : Tower
     // Update is called once per frame
 
     private void Fire(){
-        if((!target || !target.gameObject.active) && enemiesInRange.Count > 0){//try to get new target
+        if(!target && enemiesInRange.Count > 0){//try to get new target
             target = enemiesInRange[Random.Range(0,enemiesInRange.Count)];
         }
-        if (target && target.gameObject.active){
-            target.GetComponent<Enemy>().health -= damage;
+        if (target){
             DrawLightning();
             //target.GetComponent<Enemy>().health -= damage;
         }
     }
 
     private void DrawLightning(){
+        if (audioSource != null && laserSound != null&& !audioSource.isPlaying){//play the laser sound if not already
+            audioSource.PlayOneShot(laserSound);
+        }
         laserLine.positionCount = 1; //resets Line positon count
         laserLine.material.color = laserColor; //sets base laser color
         float dist = Vector3.Distance(laserLine.GetPosition(0),target.position);//gets distance between lasercore and the target
@@ -79,7 +80,7 @@ public class TowerLaser : Tower
 
     private void FadeLighting(){
         Color curColor = laserLine.material.color;//get current color of the Line
-        //laserLine.SetPosition(laserLine.positionCount-1, target.position);
+
         if(curColor.a <= .05){//checks if Line is still visible, erases if not
             EraseLightning();
         }

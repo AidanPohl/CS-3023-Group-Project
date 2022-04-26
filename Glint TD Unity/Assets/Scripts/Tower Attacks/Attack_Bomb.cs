@@ -21,11 +21,6 @@ public class Attack_Bomb : Attack
         ExplosionPool = GameObject.Find(explosionPoolName).GetComponent<ObjectPool>();
     }
 
-    void Update()
-    {
-        if (transform.position.y <= .25) { EnemyCollision(); }//explode if touching ground
-    }
-
     public override int EnemyCollision(){
         GameObject GOExplosion = ExplosionPool.GetObject();
         GOExplosion.transform.position = transform.position;
@@ -34,6 +29,6 @@ public class Attack_Bomb : Attack
         gameObject.SetActive(false);
         return damage;
     }
-    
+
 
 }

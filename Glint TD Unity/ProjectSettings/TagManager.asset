@@ -8,12 +8,8 @@ TagManager:
   - Tower Projectile
   - Tower
   - Tower Pulse
-<<<<<<< Updated upstream
-=======
   - Waypoint
   - Path Tile
-  - Tile
->>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
@@ -23,7 +19,7 @@ TagManager:
   - UI
   - Tower
   - Projectile
-  - 
+  - Editor Only
   - 
   - 
   - 

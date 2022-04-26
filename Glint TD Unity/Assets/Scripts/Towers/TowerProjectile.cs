@@ -69,7 +69,7 @@ public class TowerProjectile : Tower
     private void Fire() //Fires a projectile at the current target
     {  target = UpdateTarget();                                             //get new target
 
-        if (!target || !target.gameObject.active)
+        if (!target)
         { //if no target do not fire
             return;
         }
