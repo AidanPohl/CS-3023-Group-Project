@@ -40,10 +40,8 @@ public string copywriteDate = "Copyright " + thisDate;
 
 
 [Header("Game Settings")]
-public int baseLives = 50;
-public int lives;
-public int baseMoney = 0;
-public int money;
+public int lives = 50;
+public int money = 0;
 public int score = 0;
 
 [Header("Scene Settings")]
@@ -97,14 +95,11 @@ void Update(){
 public void StartGame(){
     gameState = gameStates.Playing;//playing game state
     timer = Stopwatch.StartNew();
-    score = 0;
     GameObject.Find("Enemy Spawner").GetComponent<SpawnEnemy>().StartSpawning();
 
 }//end StartGame();
 
 public void GameScene(){
-    lives = baseLives;
-    money = baseMoney;
     SceneManager.LoadScene(gameMap); //load game Scene
 }
 public void ExitGame(){

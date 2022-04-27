@@ -448,7 +448,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   devActivate: 0
   enemiesInRange: []
-  range: 20
+  range: 2
   placeable: 0
   target: {fileID: 0}
   attacksPerSecond: 10
@@ -2589,7 +2589,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.9365947, b: 0.033018887, a: 1}
-  m_Intensity: 5
+  m_Intensity: 3
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
