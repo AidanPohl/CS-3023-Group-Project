@@ -303,8 +303,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 217951700}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 910111230}
+        m_TargetAssemblyTypeName: EndCanvas, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
@@ -454,17 +454,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18975df0b5f70a4458be7ef62b9bbdf4, type: 3}
---- !u!114 &217951700 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5033313948907996810, guid: 18975df0b5f70a4458be7ef62b9bbdf4, type: 3}
-  m_PrefabInstance: {fileID: 217951699}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebc3d7c12b3913d4a937942acd4268ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &233919801
 GameObject:
   m_ObjectHideFlags: 0
@@ -901,8 +890,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7613fde98c95740bbe57e24cf29ba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: {fileID: 462102646}
-  score: {fileID: 0}
+  timer: {fileID: 487254559}
+  score: {fileID: 462102646}
   totalScore: 0
   highscore: {fileID: 2100532370}
 --- !u!1 &1640310121

@@ -43,10 +43,6 @@ public class EndCanvas : MonoBehaviour
         }//end if else
     }//end Start()
 
-    public void StartGame(){
-        gm.GameScene();
-    }//end StartGame()
-    
     public void StartScreen(){
      gm.StartScreen();
     }//end StartScreen()

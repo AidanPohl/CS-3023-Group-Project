@@ -242,10 +242,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   devActivate: 0
   enemiesInRange: []
-  range: 5
+  range: 2
   placeable: 0
   attacksPerSecond: 1
-  attackStrength: 1
+  attackStrength: 3
   audioSource: {fileID: 0}
   pulseSound: {fileID: 8300000, guid: 4ce862504f622dc48bf7823bd6fd4062, type: 3}
 --- !u!54 &5787478047399131187
@@ -1169,6 +1169,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 987628263297853736}
     m_Modifications:
+    - target: {fileID: 274729789445260225, guid: 15fe0a95ed652904691fd43d5b8d71e3, type: 3}
+      propertyPath: m_Intensity
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7315434669042597335, guid: 15fe0a95ed652904691fd43d5b8d71e3, type: 3}
       propertyPath: m_Name
       value: Tower pulsar

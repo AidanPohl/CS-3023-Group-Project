@@ -45,7 +45,7 @@ public class ShopCanvas : MonoBehaviour
     void Update()
     {   TimeSpan curTime = GameManager.timer.Elapsed.Duration();
         //update text boxes
-        livesText.text = "Lives: "+ Math.Max(gm.lives,0);
+        livesText.text = "Lives: "+ gm.lives;
         moneyText.text = "Money: "+ gm.money;
         timerText.text = "Timer: "+ curTime.ToString(@"hh\:mm\:ss");
 //        levelText.text = "Round: "+GameManager.level;
